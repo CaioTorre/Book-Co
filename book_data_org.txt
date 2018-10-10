@@ -1,0 +1,101 @@
+1	6383 - The Guests of Honor by Cat Amesbury
+		Fantasia - B00JI7T4V2
+2	4886 - Confissoes do Crematorio by Caitly Doughty
+		Nao-ficcao - B07B4MXMRM
+3	7777 - Inferno by Dan Brown
+		Ficcao - 9780385537858
+4	2915 - Tres Ratos Cegos by Agatha Christie
+		Misterio - B00LFTCMGK
+5	5793 - O Codigo Da Vinci by Dan Brown
+		Ficcao - 9780307277671
+6	6335 - A Origem by Dan Brown
+		Ficcao - B01LY7FD0D
+7	3386 - A Natural History of Dragons by Marie Brennan
+		Fantasia - 9780765331960
+8	7492 - O Medico e o Monstro by Robert Louis Stevenson
+		Ficcao - 9788582850138
+9	6649 - O Homem do Castelo Alto by Philip K Dick
+		Ficcao - 9788576570769
+10	4421 - A Garota que Brincava com Fogo by Stieg Larsson
+		Ficcao - 9780307949509
+11	4362 - The Complete Cthulhu Mythos Tales by H.P. Lovecraft
+		Fantasia - 9781435162556
+12	5027 - No Game No Life, vol. 1 by Yuu Kamiya
+		Fantasia - 9788583620273
+13	9690 - The Tales of Beedle the Bard by J.K. Rowling
+		Fantasia - 9780747599876
+14	3059 - O Capital no Seculo XXI by Thomas Piketty
+		Nao-ficcao - 9788580575811
+15	8763 - O Andar do Bebado by Leonard Mlodinow
+		Nao-ficcao - B008FPZPRA
+16	6926 - Divergente by Veronica Roth
+		Ficcao - 9780062024039
+17	7540 - A Piramide Vermelha by Rick Riordan
+		Fantasia - 9781423113386
+18	7426 - O Ladrao de Raios by Rick Riordan
+		Fantasia - 9780786838653
+19	7172 - Coraline by Neil Gaiman
+		Fantasia - 9780061139376
+20	4736 - Miss Peregrines Peculiar Children, vol. 1 by Ransom Riggs
+		Fantasia - 9781594746031
+21	5211 - Cidade dos Ossos by Cassandra Clare
+		Fantasia - 9781416914280
+22	1368 - The Fellowship of the Ring by J.R.R. Tolkien
+		Fantasia - 9780618346257
+23	7567 - A Game of Thrones by George R.R. Martin
+		Fantasia - 9780553588484
+24	1429 - A Marca de Atena by Rick Riordan
+		Fantasia - 9781423140603
+25	1782 - Norse Mythology by Neil Gaiman
+		Fantasia - 9780393356182
+26	1530 - Harry Potter e a Pedra Filosofal by J.K. Rowling
+		Fantasia - 9780439554930
+27	2862 - It by Stephen King
+		Ficcao - 9780450411434
+28	8123 - And Then There Were None by Agatha Christie
+		Misterio - 9780312330873
+29	7067 - Digital Fortress by Dan Brown
+		Ficcao - 9780552151696
+30	2135 - A Study in Scarlet by Sir Arthur Conan Doyle
+		Misterio - 9781420925531
+31	4929 - Anjos e Demonios by Dan Brown
+		Ficcao - 9781416524793
+32	9802 - The Illiad of Homer by Homer
+		Classicos - 9781445504384
+33	6022 - The Odyssey by Homer
+		Classicos - 9780143039952
+34	9058 - 1984 by George Orwell
+		Ficcao - B003JTHWKU
+35	9069 - Brave New World by Aldous Huxley
+		Ficcao - 9780060929879
+36	8167 - The Hobbit by J.R.R. Tolkien
+		Fantasia - 9780007926664
+37	5393 - O Conde de Monte Cristo by Alexandre Dumas
+		Classicos - 9780140449266
+38	2456 - Dracula by Bram Stoker
+		Classicos - 9780393970128
+39	3011 - Frankenstein by Mary Shelley
+		Classicos - 9780143131847
+40	2042 - Le Petit Prince by Antoine de Saint-Exupery
+		Classicos - 9780156012195
+41	3229 - A Vida, O Universo e Tudo Mais by Douglas Adams
+		Ficcao - 9780345418906
+42	6373 - Animal Farm by George Orwell
+		Ficcao - 9780452284241
+43	3421 - Enders Game by Orson Scott Card
+		Ficcao - 9780812550702
+44	2919 - O Enigma da Borboleta by Kate Ellison
+		Misterio - 9788580447408
+45	5784 - Fabrica de Vespas by Iain Banks
+		Ficcao - 9788594540065
+46	8537 - Os Passaros by Frank Baker
+		Ficcao - 9788566636437
+47	6198 - A Noiva Fantasma by Yangsze Choo
+		Fantasia - 9788566636277
+48	3324 - Do Inferno by Alan Moore
+		Ficcao - 9788563137289
+49	3315 - Red Queen by Victoria Aveyard
+		Fantasia - 9780062840004
+50	3370 - A Divina Comedia by Dante Alighieri
+		Classicos - 9781435162068
+
