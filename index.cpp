@@ -52,6 +52,7 @@ int submenu();
 
 void consulta(book_data *library, indice_denso *indice_d);
 int atualizar_campos(book_data *library, int n, indice_denso *indice_d, char categorias[][STR_LENGTH]);
+int insere_elemento(book_data *lib, int *n, indice_denso *indice, char categorias[][STR_LENGTH]);
 
 int encontra_codigo_categoria(char categorias[][STR_LENGTH], char categoria[]);
 void imprimir_todos_desordenados(book_data *library, int n);
@@ -60,6 +61,7 @@ void imprimir_book_data_posicao(book_data *library, int pos);
 void criar_indice_denso(book_data *lib, int n, indice_denso *indice);
 void imprimir_indice_denso(int n, indice_denso *indice);
 void imprimir_todos_indice_denso(book_data *lib, int n, indice_denso *indice);
+void insere_indice_denso(int cod, int pos, indice_denso *indice);
 
 int busca_codigo_indice_denso(int codigo, int min, int max, indice_denso *indice);
 void busca_indice_denso(int codigo, int n, indice_denso *indice, book_data *library);
@@ -67,6 +69,7 @@ void busca_indice_denso(int codigo, int n, indice_denso *indice, book_data *libr
 void criar_indice_denso_categorias(book_data *lib, char categorias[][STR_LENGTH], int n, indice_denso *ordenado, indice_denso_cat *indice);
 void imprimir_indice_denso_categorias(indice_denso_cat *indice, int n);
 void imprimir_todos_indice_denso_categorias(book_data *lib, char categorias[][STR_LENGTH], indice_denso_cat *indice);
+void insere_indice_denso_categorias(int cat, int pos, indice_denso *ordenado, indice_denso_cat *indice);
 
 void criar_indice_alfab(book_data *lib, int n, indice_alfab *indice);
 void imprimir_indice_alfab(int n, indice_alfab *indice);
@@ -131,18 +134,27 @@ int main(int argC, char *args[]) {
 					criar_indice_denso_categorias(library, categorias, NUM, &indice_d, &indice_dc);
 					criar_indice_alfab(library, NUM, &indice_a);
 					criar_indice_alfab_categorias(library, categorias, NUM, &indice_a, &indice_ac);
-					//REESCREVER ARQUIVO (possivelmente so editar o arquivo relevante (fseek)
+					//REESCREVER ARQUIVO (possivelmente so editar o arquivo relevante (fseek))
 				}
 				break;
 			case 3:
 				break;
 			case 4:
+				if (insere_elemento(library, &total_registros, &indice_d, categorias) == 1) { //ATUALIZAR INDICES
+					printf("Insercao realizada com sucesso, atualizando indices...\n");
+					insere_indice_denso(library[total_registros-1].chave, total_registros-1, &indice_d);
+					insere_indice_denso_categorias(encontra_codigo_categoria(categorias, library[total_registros-1].categ), total_registros-1, &indice_d, &indice_dc);
+					
+					//criar_indice_alfab(library, NUM, &indice_a);
+					//criar_indice_alfab_categorias(library, categorias, NUM, &indice_a, &indice_ac);
+					//REESCREVER ARQUIVO (possivelmente so editar o arquivo relevante (fseek))
+				}
 				break;
 			case 5:
 				op2 = submenu();
 				switch (op2) {
 					case 1:
-						imprimir_todos_indice_denso(library, NUM, &indice_d);
+						imprimir_todos_indice_denso(library, total_registros, &indice_d);
 						break;
 					case 2:
 						imprimir_todos_indice_alfab(library, &indice_a);
@@ -154,7 +166,7 @@ int main(int argC, char *args[]) {
 						imprimir_todos_indice_alfab_categorias(library, categorias, &indice_ac);
 						break;
 					case 5:
-						imprimir_todos_desordenados(library, NUM);
+						imprimir_todos_desordenados(library, total_registros);
 						break;
 					default:
 						printf("Erro na execucao\n");
@@ -279,6 +291,93 @@ int atualizar_campos(book_data *library, int n, indice_denso *indice_d, char cat
 	}
 }
 
+int insere_elemento(book_data *lib, int *n, indice_denso *indice, char categorias[][STR_LENGTH]) {
+	if (*n >= MAX_REGISTERS) {
+		printf("Numero maximo de registros! Remova um livro antes...\n");
+		return -1;
+	}
+	int ok;
+	do {
+		printf("Digite o codigo do novo livro\n>");
+		scanf("%d", &lib[*n].chave);
+		fgetc(stdin);
+		ok = (busca_codigo_indice_denso(lib[*n].chave, 0, *n-1, indice) == -1) ? 1 : 0;
+		if (!ok) printf("Codigo ja encontrado, tente novamente...\n");
+	} while (!ok);
+	
+	printf("Digite o TITULO do novo livro\n>");
+	fgets(lib[*n].nome, STR_LENGTH, stdin);
+	purge_ln(lib[*n].nome);
+	
+	printf("Digite o AUTOR do novo livro\n>");
+	fgets(lib[*n].autor, STR_LENGTH, stdin);
+	purge_ln(lib[*n].autor);
+	
+	printf("Selecione a CATEGORIA do novo livro\n>");
+	int i;
+	for (i = 0; i < NUM_CATEGORIAS; i++) {
+		printf("\t%d. %s\n", i+1, categorias[i]);
+	}
+	do {
+		scanf("%d", &i);
+		fgetc(stdin);
+		if (i < 1 || i > NUM_CATEGORIAS) printf("Categoria invalida!\n");
+	} while (i < 1 || i > NUM_CATEGORIAS);
+	strcpy(lib[*n].categ, categorias[i-1]);
+	purge_ln(lib[*n].categ);
+	
+	printf("Digite o ISBN/ASIN do novo livro\n>");
+	fgets(lib[*n].isbn, ISBN_LENGTH, stdin);
+	purge_ln(lib[*n].isbn);
+	
+	printf("Digite o PRECO do novo livro\n>");
+	scanf("%f", &lib[*n].preco);
+	
+	printf("-------------------------------------------\nO novo livro é:\n");
+	imprimir_book_data_posicao(lib, *n);
+	printf("Confirma? (0 para NAO, 1 para SIM)\n>");
+	scanf("%d", &i);
+	
+	if (!i) return -1;
+	(*n) = (*n) + 1;
+	return 1;
+}
+
+void insere_indice_denso(int cod, int pos, indice_denso *indice) {
+	int i = pos - 1;
+	while (cod < indice->chaves[i][0]) {
+		indice->chaves[i+1][0] = indice->chaves[i][0];
+		indice->chaves[i+1][1] = indice->chaves[i][1];
+		i--;
+	}
+	indice->chaves[i+1][0] = cod;
+	indice->chaves[i+1][1] = pos;
+}
+
+void insere_indice_denso_categorias(int cat, int pos, indice_denso *ordenado, indice_denso_cat *indice) {
+	int atual = indice->primeiros[cat];
+	int em_ordem = 0; //Vai percorrer ordenado
+	int anterior; //Ultimo da lista ligada
+	while (ordenado->chaves[em_ordem][1] != pos && ordenado->chaves[em_ordem][1] != atual) em_ordem++;
+	if (ordenado->chaves[em_ordem][1] == pos) { //Novo elemento é o primeiro da categoria
+		indice->chaves[pos] = indice->primeiros[cat];
+		indice->primeiros[cat] = pos;
+	} else { //Existe algum elemento que vem antes do novo
+		int ok = 0;
+		anterior = indice->primeiros[cat];
+		do {
+			atual = indice->chaves[atual];
+			while (ordenado->chaves[em_ordem][1] != pos && ordenado->chaves[em_ordem][1] != atual) em_ordem++;
+			if (ordenado->chaves[em_ordem][1] == pos) { //Achou a posicao do novo elemento
+				indice->chaves[pos] = atual; //= indice->chaves[anterior];
+				indice->chaves[anterior] = pos;
+				ok = 1;
+			}
+			anterior = atual;
+		} while (!ok);
+	}
+}
+
 void purge_ln(char *txt) {
 	int i = 0;
 	while (txt[i] != '\n' && txt[i] != '\0') i++;
@@ -352,7 +451,7 @@ int busca_codigo_indice_denso(int codigo, int min, int max, indice_denso *indice
 }
 
 void busca_indice_denso(int codigo, int n, indice_denso *indice, book_data *library) {
-	int i = busca_codigo_indice_denso(codigo, 0, n, indice);
+	int i = busca_codigo_indice_denso(codigo, 0, n-1, indice);
 	if (i == -1) {
 		printf("Código %d não encontrado...\n", codigo);
 	} else {
