@@ -89,11 +89,13 @@ void imprimir_indice_alfab(int n, indice_alfab *indice);
 void imprimir_titulos_ordem_alfab(book_data *li, indice_alfab *indice);
 void imprimir_todos_indice_alfab(book_data *lib, indice_alfab *indice);
 void insere_indice_alfab(char nome[], int pos, indice_alfab *indice, book_data *library);
+void remove_indice_alfab(int pos, int n, indice_alfab *indice);
 
 void criar_indice_alfab_categorias(book_data *lib, char categorias[][STR_LENGTH], int n, indice_alfab *ordenado, indice_alfab_cat *indice);
 void imprimir_indice_alfab_categorias(indice_alfab_cat *indice, int n);
 void imprimir_todos_indice_alfab_categorias(book_data *lib, char categorias[][STR_LENGTH], indice_alfab_cat *indice);
 void insere_indice_alfab_categorias(char nome[], int cat, int pos, indice_alfab *ordenado, indice_alfab_cat *indice);
+void remove_indice_alfab_categorias(int cat, int pos, int n, indice_alfab_cat *indice);
 
 int hashing(book_data *library, int n);
 int valor(char *txt);
@@ -196,10 +198,13 @@ int main(int argC, char *args[]) {
 					int cat = encontra_codigo_categoria(categorias, excluido.categ);
 					int n = total_registros - 1;
 					remove_indice_denso(n, excluido.chave, pos_removida, &indice_d);
+					printf("Removido do indice_denso\n");
 					remove_indice_denso_categorias(cat, pos_removida, n, &indice_dc);
-					
-					criar_indice_alfab(library, total_registros, &indice_a);
-					criar_indice_alfab_categorias(library, categorias, total_registros, &indice_a, &indice_ac);
+					printf("Removido do indice_denso_cat\n");
+					remove_indice_alfab(pos_removida, total_registros, &indice_a);
+					printf("Removido do indice_alfab\n");
+					remove_indice_alfab_categorias(cat, pos_removida, total_registros, &indice_ac);
+					printf("Removido do indice_alfab_cat\n");
 					modificacoes_nao_salvas = 1;
 				}
 				break;
@@ -284,7 +289,7 @@ int main(int argC, char *args[]) {
 				break;
 			case 8:
 				if (modificacoes_nao_salvas == 1) {
-					printf("Voce tem modificacoes nao salvas, deseja sair mesmo assim? (0 para NAO, 1 para SIM)\n>");
+					printf("Voce tem modificacoes nao salvas, deseja sair mesmo assim? (0 para NAO, 1 para SIM)\n> ");
 					scanf("%d", &op2);
 					if (op2 == 0) op1 = 0;
 				}
@@ -492,7 +497,7 @@ int atualizar_campos(book_data *library, int n, indice_denso *indice_d, char cat
 		scanf("%d", &editar);
 		if (editar) {
 			fgetc(stdin);
-			printf("\tDigite o novo TITULO\n>");
+			printf("\tDigite o novo TITULO\n> ");
 			fgets(library[pos].nome, STR_LENGTH, stdin);
 			purge_ln(library[pos].nome);
 		}
@@ -502,7 +507,7 @@ int atualizar_campos(book_data *library, int n, indice_denso *indice_d, char cat
 		scanf("%d", &editar);
 		if (editar) {
 			fgetc(stdin);
-			printf("\tDigite o novo AUTOR\n>");
+			printf("\tDigite o novo AUTOR\n> ");
 			fgets(library[pos].autor, STR_LENGTH, stdin);
 			purge_ln(library[pos].autor);
 		}
@@ -516,7 +521,7 @@ int atualizar_campos(book_data *library, int n, indice_denso *indice_d, char cat
 			for (i = 0; i < NUM_CATEGORIAS; i++) {
 				printf("\t%d. %s\n", i+1, categorias[i]);
 			}
-			printf(">");
+			printf("> ");
 			do {
 				scanf("%d", &i);
 				fgetc(stdin);
@@ -530,7 +535,7 @@ int atualizar_campos(book_data *library, int n, indice_denso *indice_d, char cat
 		scanf("%d", &editar);
 		if (editar) {
 			fgetc(stdin);
-			printf("\tDigite o novo ISBN/ASIN\n>");
+			printf("\tDigite o novo ISBN/ASIN\n> ");
 			fgets(library[pos].isbn, ISBN_LENGTH, stdin);
 			purge_ln(library[pos].isbn);
 		}
@@ -540,7 +545,7 @@ int atualizar_campos(book_data *library, int n, indice_denso *indice_d, char cat
 		scanf("%d", &editar);
 		if (editar) {
 			fgetc(stdin);
-			printf("\tDigite o novo PRECO\n>");
+			printf("\tDigite o novo PRECO\n> ");
 			scanf("%f", &library[pos].preco);
 		}
 		
@@ -557,7 +562,7 @@ int insere_elemento(book_data *lib, int *n, indice_denso *indice, char categoria
 	}
 	int ok;
 	do {
-		printf("Digite o codigo do novo livro (ou -1 para cancelar)\n>");
+		printf("Digite o codigo do novo livro (ou -1 para cancelar)\n> ");
 		scanf("%d", &lib[*n].chave);
 		fgetc(stdin);
 		if (lib[*n].chave == -1) return -1;
@@ -565,11 +570,11 @@ int insere_elemento(book_data *lib, int *n, indice_denso *indice, char categoria
 		if (!ok) printf("Codigo ja encontrado, tente novamente...\n");
 	} while (!ok);
 	
-	printf("Digite o TITULO do novo livro\n>");
+	printf("Digite o TITULO do novo livro\n> ");
 	fgets(lib[*n].nome, STR_LENGTH, stdin);
 	purge_ln(lib[*n].nome);
 	
-	printf("Digite o AUTOR do novo livro\n>");
+	printf("Digite o AUTOR do novo livro\n> ");
 	fgets(lib[*n].autor, STR_LENGTH, stdin);
 	purge_ln(lib[*n].autor);
 	
@@ -578,7 +583,7 @@ int insere_elemento(book_data *lib, int *n, indice_denso *indice, char categoria
 	for (i = 0; i < NUM_CATEGORIAS; i++) {
 		printf("\t%d. %s\n", i+1, categorias[i]);
 	}
-	printf(">");
+	printf("> ");
 	do {
 		scanf("%d", &i);
 		fgetc(stdin);
@@ -587,16 +592,16 @@ int insere_elemento(book_data *lib, int *n, indice_denso *indice, char categoria
 	strcpy(lib[*n].categ, categorias[i-1]);
 	purge_ln(lib[*n].categ);
 	
-	printf("Digite o ISBN/ASIN do novo livro\n>");
+	printf("Digite o ISBN/ASIN do novo livro\n> ");
 	fgets(lib[*n].isbn, ISBN_LENGTH, stdin);
 	purge_ln(lib[*n].isbn);
 	
-	printf("Digite o PRECO do novo livro\n>");
+	printf("Digite o PRECO do novo livro\n> ");
 	scanf("%f", &lib[*n].preco);
 	
 	printf("-------------------------------------------\nO novo livro é:\n");
 	imprimir_book_data_posicao(lib, *n);
-	printf("Confirma? (0 para NAO, 1 para SIM)\n>");
+	printf("Confirma? (0 para NAO, 1 para SIM)\n> ");
 	scanf("%d", &i);
 	
 	if (!i) return -1;
@@ -613,21 +618,21 @@ int remove_elemento(book_data *lib, int *n, indice_denso *indice, book_data *exc
 	int ok;
 	int pos;
 	do {
-		printf("Digite o codigo do livro a ser removido (ou -1 para cancelar)\n>");
+		printf("Digite o codigo do livro a ser removido (ou -1 para cancelar)\n> ");
 		scanf("%d", &cod);
 		if (cod == -1) return -1;
 		ok = ((pos = busca_codigo_indice_denso(cod, 0, *n-1, indice)) == -1) ? 0 : 1;
 		if (!ok) printf("Codigo nao encontrado, tente novamente...\n");
 	} while (!ok);
-	printf("Livro encontrado:\n");
+	printf("Livro encontrado:\n[%2d]", pos);
 	imprimir_book_data_posicao(lib, pos);
-	printf("\nTem certeza que deseja remover esse livro? (1 para SIM, 0 para NAO)\n>");
+	printf("\nTem certeza que deseja remover esse livro? (1 para SIM, 0 para NAO)\n> ");
 	scanf("%d", &ok);
 	if (ok == 1) {
 		*excluido = lib[pos];
 		int i;
 		*n = *n - 1;
-		for (i = pos + 1; i < *n; i++) {
+		for (i = pos + 1; i <= *n; i++) {
 			lib[i - 1] = lib[i];
 		}
 		return pos;
@@ -636,8 +641,8 @@ int remove_elemento(book_data *lib, int *n, indice_denso *indice, book_data *exc
 }
 
 void insere_indice_denso(int cod, int pos, indice_denso *indice) {
-	int i = pos - 1;
-	while (cod < indice->chaves[i][0]) {
+	int i = pos;
+	while (cod < indice->chaves[pos][0]) {
 		indice->chaves[i+1][0] = indice->chaves[i][0];
 		indice->chaves[i+1][1] = indice->chaves[i][1];
 		i--;
@@ -648,7 +653,8 @@ void insere_indice_denso(int cod, int pos, indice_denso *indice) {
 
 void remove_indice_denso(int n, int cod, int pos, indice_denso *indice) {
 	int i;
-	for (i = 0; i < n; i++) {
+	n = n + 1;
+	for (i = 0; i <= n; i++) {
 		if (indice->chaves[i][1] > pos) indice->chaves[i][1] = indice->chaves[i][1] - 1; //Todas as posicoes maiores que a removida
 		if (indice->chaves[i][0] > cod) { //UP-SHIFTING valores com codigo maior (ficam depois dele no vetor)
 			indice->chaves[i-1][0] = indice->chaves[i][0];
@@ -691,10 +697,11 @@ void remove_indice_denso_categorias(int cat, int pos, int n, indice_denso_cat *i
 		indice->chaves[atual] = indice->chaves[indice->chaves[atual]];
 	}
 	int i;
-	for (i = pos + 1; i < n; i++) {
-		indice->chaves[i - 1] = indice->chaves[i]; //UP-SHIFTING valores com codigo maior (ficam depois dele no vetor)
+	for (i = 0; i < NUM_CATEGORIAS; i++) {
+		if (indice->primeiros[i] > pos) indice->primeiros[i] = indice->primeiros[i] - 1; //Todas as posicoes maiores que a removida
 	}
-	for (i = 0; i < n; i++) {
+	for (i = pos + 1; i <= n + 1; i++) indice->chaves[i - 1] = indice->chaves[i]; //UP-SHIFTING valores com codigo maior (ficam depois dele no vetor)
+	for (i = 0; i <= n + 1; i++) {
 		if (indice->chaves[i] > pos) indice->chaves[i] = indice->chaves[i] - 1; //Todas as posicoes maiores que a removida
 	}
 }
@@ -716,6 +723,24 @@ void insere_indice_alfab(char nome[], int pos, indice_alfab *indice, book_data *
 	
 	indice->chaves[anterior] = pos;
 	indice->chaves[pos] = atual;
+}
+
+void remove_indice_alfab(int pos, int n, indice_alfab *indice) {
+	int atual = indice->pri;
+	if (pos == atual) {
+		indice->pri = indice->chaves[atual];
+		if (indice->pri > pos) indice->pri = indice->pri - 1;
+	} else {
+		if (atual > pos) indice->pri = indice->pri - 1; //Diminui se for um ponteiro maior que o removido
+		atual = indice->chaves[atual];
+		while (indice->chaves[atual] != pos) atual = indice->chaves[atual];
+		indice->chaves[atual] = indice->chaves[indice->chaves[atual]]; 
+	}
+	int i;
+	for (i = pos + 1; i <= n; i++) indice->chaves[i - 1] = indice->chaves[i]; //UP-SHIFTING valores com codigo maior (ficam depois dele no vetor)
+	for (i = 0; i <= n; i++) { 
+		if (indice->chaves[i] > pos) indice->chaves[i] = indice->chaves[i] - 1; //Todas as posicoes maiores que a removida
+	} 
 }
 
 void insere_indice_alfab_categorias(char nome[], int cat, int pos, indice_alfab *ordenado, indice_alfab_cat *indice) {
@@ -744,6 +769,25 @@ void insere_indice_alfab_categorias(char nome[], int cat, int pos, indice_alfab 
 	} while (!ok);
 }
 
+void remove_indice_alfab_categorias(int cat, int pos, int n, indice_alfab_cat *indice) {
+	int atual = indice->primeiros[cat];
+	if (pos == atual) {
+		indice->primeiros[cat] = indice->chaves[atual];
+	} else {
+		atual = indice->chaves[atual];
+		while (indice->chaves[atual] != pos) atual = indice->chaves[atual];
+		indice->chaves[atual] = indice->chaves[indice->chaves[atual]]; 
+	}
+	int i;
+	for (i = 0; i < NUM_CATEGORIAS; i++) {
+		if (indice->primeiros[i] > pos) indice->primeiros[i] = indice->primeiros[i] - 1; //Todas as posicoes maiores que a removida
+	}
+	for (i = pos + 1; i <= n + 1; i++) indice->chaves[i - 1] = indice->chaves[i]; //UP-SHIFTING valores com codigo maior (ficam depois dele no vetor)
+	for (i = 0; i <= n + 1; i++) { 
+		if (indice->chaves[i] > pos) indice->chaves[i] = indice->chaves[i] - 1; //Todas as posicoes maiores que a removida
+	} 
+}
+
 void purge_ln(char *txt) {
 	int i = 0;
 	while (txt[i] != '\n' && txt[i] != '\0') i++;
@@ -758,6 +802,7 @@ int encontra_codigo_categoria(char categorias[][STR_LENGTH], char categoria[]) {
 void imprimir_todos_desordenados(book_data *library, int n) {
 	int i;
 	printf("TODOS OS TITULOS DESORDENADOS\n");
+	imprimir_formato();
 	for (i = 0; i < n; i++) {
 		printf("[%2d]", i);
 		imprimir_book_data_posicao(library, i);
@@ -780,7 +825,6 @@ void criar_indice_denso(book_data *lib, int n, indice_denso *indice) {
 		indice->chaves[i][0] = lib[i].chave;
 		indice->chaves[i][1] = i;
 	}
-	
 	for (i = 0; i < n; i++) { //BUBBLESORT
 		for (j = i; j < n; j++) {
 			if (indice->chaves[i][0] > indice->chaves[j][0]) {
@@ -839,17 +883,14 @@ void imprimir_todos_indice_denso(book_data *lib, int n, indice_denso *indice) {
 void criar_indice_denso_categorias(book_data *lib, char categorias[][STR_LENGTH], int n, indice_denso *ordenado, indice_denso_cat *indice) {
 	int atual = 0;
 	int categoria_atual;
-	
 	int i;
 	
 	for (i = 0; i < NUM_CATEGORIAS; i++) {
 		indice->primeiros[i] = -1;
 	}
-	
 	for (i = 0; i < n; i++) {
 		indice->chaves[i] = -1;
 	}
-	
 	while (atual < n) {
 		categoria_atual = encontra_codigo_categoria(categorias, lib[ordenado->chaves[atual][1]].categ);
 		
@@ -860,7 +901,6 @@ void criar_indice_denso_categorias(book_data *lib, char categorias[][STR_LENGTH]
 			while (indice->chaves[i] != -1) i = indice->chaves[i];
 			indice->chaves[i] = ordenado->chaves[atual][1];
 		}
-		
 		atual++;
 	}
 }
@@ -987,13 +1027,14 @@ void imprimir_indice_alfab_categorias(indice_alfab_cat *indice, int n) {
 }
 
 void imprimir_todos_indice_alfab_categorias(book_data *lib, char categorias[][STR_LENGTH], indice_alfab_cat *indice) {
-	int i, cat;
+	int i, cat, pos = 0;
 	printf("TODOS OS TITULOS COM ORDENACAO SECUNDARIA (POR CATEGORIAS)\n");
 	for (cat = 0; cat < NUM_CATEGORIAS; cat++) {
 		printf("\t\tCategoria: %s\n", categorias[cat]);
 		imprimir_formato();
 		i = indice->primeiros[cat];
 		while (i != -1) {
+			printf("[%2d]", pos++);
 			imprimir_book_data_posicao(lib, i);
 			i = indice->chaves[i];
 		}

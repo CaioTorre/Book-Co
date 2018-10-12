@@ -50,7 +50,7 @@ int main (int argC, char *argv[]) {
 		library[i].chave = chaves[i];
 		get(library[i].nome, STR_LENGTH, fd);
 		get(library[i].categ, STR_LENGTH, fd);
-		library[i].preco = (float)(rand() % 10000) / 100.0;
+		library[i].preco = 10.0 + (float)(rand() % 10000) / 100.0;
 		get(library[i].isbn, ISBN_LENGTH, fd);
 		get(library[i].autor, STR_LENGTH, fd);
 		//printf("%.1f%%\n", 100.0*i/NUM); 

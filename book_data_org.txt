@@ -1,101 +1,54 @@
-1	6383 - The Guests of Honor by Cat Amesbury
-		Fantasia - B00JI7T4V2
-2	4886 - Confissoes do Crematorio by Caitly Doughty
-		Nao-ficcao - B07B4MXMRM
-3	7777 - Inferno by Dan Brown
-		Ficcao - 9780385537858
-4	2915 - Tres Ratos Cegos by Agatha Christie
-		Misterio - B00LFTCMGK
-5	5793 - O Codigo Da Vinci by Dan Brown
-		Ficcao - 9780307277671
-6	6335 - A Origem by Dan Brown
-		Ficcao - B01LY7FD0D
-7	3386 - A Natural History of Dragons by Marie Brennan
-		Fantasia - 9780765331960
-8	7492 - O Medico e o Monstro by Robert Louis Stevenson
-		Ficcao - 9788582850138
-9	6649 - O Homem do Castelo Alto by Philip K Dick
-		Ficcao - 9788576570769
-10	4421 - A Garota que Brincava com Fogo by Stieg Larsson
-		Ficcao - 9780307949509
-11	4362 - The Complete Cthulhu Mythos Tales by H.P. Lovecraft
-		Fantasia - 9781435162556
-12	5027 - No Game No Life, vol. 1 by Yuu Kamiya
-		Fantasia - 9788583620273
-13	9690 - The Tales of Beedle the Bard by J.K. Rowling
-		Fantasia - 9780747599876
-14	3059 - O Capital no Seculo XXI by Thomas Piketty
-		Nao-ficcao - 9788580575811
-15	8763 - O Andar do Bebado by Leonard Mlodinow
-		Nao-ficcao - B008FPZPRA
-16	6926 - Divergente by Veronica Roth
-		Ficcao - 9780062024039
-17	7540 - A Piramide Vermelha by Rick Riordan
-		Fantasia - 9781423113386
-18	7426 - O Ladrao de Raios by Rick Riordan
-		Fantasia - 9780786838653
-19	7172 - Coraline by Neil Gaiman
-		Fantasia - 9780061139376
-20	4736 - Miss Peregrines Peculiar Children, vol. 1 by Ransom Riggs
-		Fantasia - 9781594746031
-21	5211 - Cidade dos Ossos by Cassandra Clare
-		Fantasia - 9781416914280
-22	1368 - The Fellowship of the Ring by J.R.R. Tolkien
-		Fantasia - 9780618346257
-23	7567 - A Game of Thrones by George R.R. Martin
-		Fantasia - 9780553588484
-24	1429 - A Marca de Atena by Rick Riordan
-		Fantasia - 9781423140603
-25	1782 - Norse Mythology by Neil Gaiman
-		Fantasia - 9780393356182
-26	1530 - Harry Potter e a Pedra Filosofal by J.K. Rowling
-		Fantasia - 9780439554930
-27	2862 - It by Stephen King
-		Ficcao - 9780450411434
-28	8123 - And Then There Were None by Agatha Christie
-		Misterio - 9780312330873
-29	7067 - Digital Fortress by Dan Brown
-		Ficcao - 9780552151696
-30	2135 - A Study in Scarlet by Sir Arthur Conan Doyle
-		Misterio - 9781420925531
-31	4929 - Anjos e Demonios by Dan Brown
-		Ficcao - 9781416524793
-32	9802 - The Illiad of Homer by Homer
-		Classicos - 9781445504384
-33	6022 - The Odyssey by Homer
-		Classicos - 9780143039952
-34	9058 - 1984 by George Orwell
-		Ficcao - B003JTHWKU
-35	9069 - Brave New World by Aldous Huxley
-		Ficcao - 9780060929879
-36	8167 - The Hobbit by J.R.R. Tolkien
-		Fantasia - 9780007926664
-37	5393 - O Conde de Monte Cristo by Alexandre Dumas
-		Classicos - 9780140449266
-38	2456 - Dracula by Bram Stoker
-		Classicos - 9780393970128
-39	3011 - Frankenstein by Mary Shelley
-		Classicos - 9780143131847
-40	2042 - Le Petit Prince by Antoine de Saint-Exupery
-		Classicos - 9780156012195
-41	3229 - A Vida, O Universo e Tudo Mais by Douglas Adams
-		Ficcao - 9780345418906
-42	6373 - Animal Farm by George Orwell
-		Ficcao - 9780452284241
-43	3421 - Enders Game by Orson Scott Card
-		Ficcao - 9780812550702
-44	2919 - O Enigma da Borboleta by Kate Ellison
-		Misterio - 9788580447408
-45	5784 - Fabrica de Vespas by Iain Banks
-		Ficcao - 9788594540065
-46	8537 - Os Passaros by Frank Baker
-		Ficcao - 9788566636437
-47	6198 - A Noiva Fantasma by Yangsze Choo
-		Fantasia - 9788566636277
-48	3324 - Do Inferno by Alan Moore
-		Ficcao - 9788563137289
-49	3315 - Red Queen by Victoria Aveyard
-		Fantasia - 9780062840004
-50	3370 - A Divina Comedia by Dante Alighieri
-		Classicos - 9781435162068
-
+TODOS OS TITULOS DESORDENADOS
+------------------------------------------------------------------------------------------------------------------------------------------
+POS	     COD -                                        TITULO |                     AUTOR |  CATEGORIA |               ISBN/ASIN | PRECO
+------------------------------------------------------------------------------------------------------------------------------------------
+[ 0]	6383 -                           The Guests of Honor |              Cat Amesbury |   Fantasia |   ASIN:      B00JI7T4V2 | R$64.13
+[ 1]	4886 -                      Confissoes do Crematorio |            Caitly Doughty | Nao-ficcao |   ASIN:      B07B4MXMRM | R$35.26
+[ 2]	7777 -                                       Inferno |                 Dan Brown |     Ficcao | ISBN13:   9780385537858 | R$60.91
+[ 3]	2915 -                              Tres Ratos Cegos |           Agatha Christie |   Misterio |   ASIN:      B00LFTCMGK | R$89.80
+[ 4]	5793 -                             O Codigo Da Vinci |                 Dan Brown |     Ficcao | ISBN13:   9780307277671 | R$99.56
+[ 5]	6335 -                                      A Origem |                 Dan Brown |     Ficcao |   ASIN:      B01LY7FD0D | R$18.73
+[ 6]	3386 -                  A Natural History of Dragons |             Marie Brennan |   Fantasia | ISBN13:   9780765331960 | R$68.62
+[ 7]	7492 -                          O Medico e o Monstro |    Robert Louis Stevenson |     Ficcao | ISBN13:   9788582850138 | R$91.70
+[ 8]	6649 -                       O Homem do Castelo Alto |             Philip K Dick |     Ficcao | ISBN13:   9788576570769 | R$69.96
+[ 9]	4421 -                A Garota que Brincava com Fogo |             Stieg Larsson |     Ficcao | ISBN13:   9780307949509 | R$72.81
+[10]	4362 -             The Complete Cthulhu Mythos Tales |            H.P. Lovecraft |   Fantasia | ISBN13:   9781435162556 | R$23.05
+[11]	5027 -                       No Game No Life, vol. 1 |                Yuu Kamiya |   Fantasia | ISBN13:   9788583620273 | R$9.25
+[12]	9690 -                  The Tales of Beedle the Bard |              J.K. Rowling |   Fantasia | ISBN13:   9780747599876 | R$70.84
+[13]	3059 -                       O Capital no Seculo XXI |            Thomas Piketty | Nao-ficcao | ISBN13:   9788580575811 | R$63.27
+[14]	8763 -                             O Andar do Bebado |          Leonard Mlodinow | Nao-ficcao |   ASIN:      B008FPZPRA | R$3.36
+[15]	6926 -                                    Divergente |             Veronica Roth |     Ficcao | ISBN13:   9780062024039 | R$65.05
+[16]	7540 -                           A Piramide Vermelha |              Rick Riordan |   Fantasia | ISBN13:   9781423113386 | R$8.46
+[17]	7426 -                             O Ladrao de Raios |              Rick Riordan |   Fantasia | ISBN13:   9780786838653 | R$17.29
+[18]	7172 -                                      Coraline |               Neil Gaiman |   Fantasia | ISBN13:   9780061139376 | R$13.13
+[19]	4736 -     Miss Peregrines Peculiar Children, vol. 1 |              Ransom Riggs |   Fantasia | ISBN13:   9781594746031 | R$58.57
+[20]	5211 -                              Cidade dos Ossos |           Cassandra Clare |   Fantasia | ISBN13:   9781416914280 | R$61.24
+[21]	1368 -                    The Fellowship of the Ring |            J.R.R. Tolkien |   Fantasia | ISBN13:   9780618346257 | R$38.95
+[22]	7567 -                             A Game of Thrones |        George R.R. Martin |   Fantasia | ISBN13:   9780553588484 | R$95.82
+[23]	1429 -                              A Marca de Atena |              Rick Riordan |   Fantasia | ISBN13:   9781423140603 | R$5.45
+[24]	1782 -                               Norse Mythology |               Neil Gaiman |   Fantasia | ISBN13:   9780393356182 | R$88.14
+[25]	1530 -              Harry Potter e a Pedra Filosofal |              J.K. Rowling |   Fantasia | ISBN13:   9780439554930 | R$33.67
+[26]	2862 -                                            It |              Stephen King |     Ficcao | ISBN13:   9780450411434 | R$54.34
+[27]	8123 -                      And Then There Were None |           Agatha Christie |   Misterio | ISBN13:   9780312330873 | R$3.64
+[28]	7067 -                              Digital Fortress |                 Dan Brown |     Ficcao | ISBN13:   9780552151696 | R$40.43
+[29]	2135 -                            A Study in Scarlet |    Sir Arthur Conan Doyle |   Misterio | ISBN13:   9781420925531 | R$37.50
+[30]	4929 -                              Anjos e Demonios |                 Dan Brown |     Ficcao | ISBN13:   9781416524793 | R$10.87
+[31]	9802 -                           The Illiad of Homer |                     Homer |  Classicos | ISBN13:   9781445504384 | R$68.08
+[32]	6022 -                                   The Odyssey |                     Homer |  Classicos | ISBN13:   9780143039952 | R$72.76
+[33]	9058 -                                          1984 |             George Orwell |     Ficcao |   ASIN:      B003JTHWKU | R$71.78
+[34]	9069 -                               Brave New World |             Aldous Huxley |     Ficcao | ISBN13:   9780060929879 | R$57.88
+[35]	8167 -                                    The Hobbit |            J.R.R. Tolkien |   Fantasia | ISBN13:   9780007926664 | R$35.84
+[36]	5393 -                       O Conde de Monte Cristo |           Alexandre Dumas |  Classicos | ISBN13:   9780140449266 | R$54.03
+[37]	2456 -                                       Dracula |               Bram Stoker |  Classicos | ISBN13:   9780393970128 | R$26.51
+[38]	3011 -                                  Frankenstein |              Mary Shelley |  Classicos | ISBN13:   9780143131847 | R$27.54
+[39]	2042 -                               Le Petit Prince |  Antoine de Saint-Exupery |  Classicos | ISBN13:   9780156012195 | R$23.99
+[40]	3229 -                A Vida, O Universo e Tudo Mais |             Douglas Adams |     Ficcao | ISBN13:   9780345418906 | R$99.32
+[41]	6373 -                                   Animal Farm |             George Orwell |     Ficcao | ISBN13:   9780452284241 | R$50.60
+[42]	3421 -                                   Enders Game |          Orson Scott Card |     Ficcao | ISBN13:   9780812550702 | R$96.76
+[43]	2919 -                         O Enigma da Borboleta |              Kate Ellison |   Misterio | ISBN13:   9788580447408 | R$33.68
+[44]	5784 -                             Fabrica de Vespas |                Iain Banks |     Ficcao | ISBN13:   9788594540065 | R$77.39
+[45]	8537 -                                   Os Passaros |               Frank Baker |     Ficcao | ISBN13:   9788566636437 | R$0.12
+[46]	6198 -                              A Noiva Fantasma |              Yangsze Choo |   Fantasia | ISBN13:   9788566636277 | R$62.26
+[47]	3324 -                                    Do Inferno |                Alan Moore |     Ficcao | ISBN13:   9788563137289 | R$85.86
+[48]	3315 -                                     Red Queen |          Victoria Aveyard |   Fantasia | ISBN13:   9780062840004 | R$80.94
+[49]	3370 -                              A Divina Comedia |           Dante Alighieri |  Classicos | ISBN13:   9781435162068 | R$75.39
