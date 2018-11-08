@@ -157,22 +157,6 @@ int main(int argC, char *args[]) {
 		if (erros_carregamento % 2) criar_indice_alfab_categorias(library, categorias, NUM, &indice_a, &indice_ac);
 	}
 	
-	//imprimir_todos_desordenados(library, NUM);
-	
-	//imprimir_indice_denso(NUM, &indice_d);
-	//imprimir_todos_indice_denso(library, NUM, &indice_d);
-	//busca_indice_denso(2915, NUM, &indice_d, library);
-	
-	//imprimir_indice_denso_categorias(&indice_dc, NUM);
-	//imprimir_todos_indice_denso_categorias(library, categorias, &indice_dc);
-	
-	//imprimir_indice_alfab(NUM, &indice_a);
-	//imprimir_titulos_ordem_alfab(library, &indice_a);
-	//imprimir_todos_indice_alfab(library, &indice_a);
-	
-	//imprimir_indice_alfab_categorias(&indice_ac, NUM);
-	//imprimir_todos_indice_alfab_categorias(library, categorias, &indice_ac);
-	
 	int op1, op2;
 	
 	do {
@@ -195,33 +179,47 @@ int main(int argC, char *args[]) {
 			case 3:
 				int pos_removida;
 				if ((pos_removida = remove_elemento(library, &total_registros, &indice_d, &excluido)) != -1) { //ATUALIZAR INDICES
-					int cat = encontra_codigo_categoria(categorias, excluido.categ);
-					int n = total_registros - 1;
-					remove_indice_denso(n, excluido.chave, pos_removida, &indice_d);
-					printf("Removido do indice_denso\n");
-					remove_indice_denso_categorias(cat, pos_removida, n, &indice_dc);
-					printf("Removido do indice_denso_cat\n");
-					remove_indice_alfab(pos_removida, total_registros, &indice_a);
-					printf("Removido do indice_alfab\n");
-					remove_indice_alfab_categorias(cat, pos_removida, total_registros, &indice_ac);
-					printf("Removido do indice_alfab_cat\n");
+					#ifdef BETA_FUNCTIONS
+						int cat = encontra_codigo_categoria(categorias, excluido.categ);
+						int n = total_registros - 1;
+						remove_indice_denso(n, excluido.chave, pos_removida, &indice_d);
+						printf("Removido do indice_denso\n");
+						remove_indice_denso_categorias(cat, pos_removida, n, &indice_dc);
+						printf("Removido do indice_denso_cat\n");
+						remove_indice_alfab(pos_removida, total_registros, &indice_a);
+						printf("Removido do indice_alfab\n");
+						remove_indice_alfab_categorias(cat, pos_removida, total_registros, &indice_ac);
+						printf("Removido do indice_alfab_cat\n");
+					#else
+						criar_indice_denso(library, total_registros, &indice_d);
+						criar_indice_denso_categorias(library, categorias, total_registros, &indice_d, &indice_dc);
+						criar_indice_alfab(library, total_registros, &indice_a);
+						criar_indice_alfab_categorias(library, categorias, total_registros, &indice_a, &indice_ac);
+					#endif
 					modificacoes_nao_salvas = 1;
 				}
 				break;
 			case 4:
 				if (insere_elemento(library, &total_registros, &indice_d, categorias) == 1) { //ATUALIZAR INDICES
-					int cat = encontra_codigo_categoria(categorias, library[total_registros-1].categ);
-					int n = total_registros - 1;
-					printf("HASH := %d\n", hashing(library, n));
-					printf("Insercao realizada com sucesso, atualizando indices...\n");
-					insere_indice_denso(library[n].chave, n, &indice_d);
-					printf("Inserido em indice_denso\n");
-					insere_indice_denso_categorias(cat, n, &indice_d, &indice_dc);
-					printf("Inserido em indice_denso_cat\n");
-					insere_indice_alfab(library[n].nome, n, &indice_a, library);
-					printf("Inserido em indice_alfab\n");
-					insere_indice_alfab_categorias(library[n].nome, cat, n, &indice_a, &indice_ac);
-					printf("Inserido em indice_alfab_cat\n");
+					//printf("HASH := %d\n", hashing(library, n));
+					#ifdef BETA_FUNCTIONS
+						int cat = encontra_codigo_categoria(categorias, library[total_registros-1].categ);
+						int n = total_registros - 1;
+						printf("Insercao realizada com sucesso, atualizando indices...\n");
+						insere_indice_denso(library[n+1].chave, n+1, &indice_d);
+						printf("Inserido em indice_denso\n");
+						insere_indice_denso_categorias(cat, n, &indice_d, &indice_dc);
+						printf("Inserido em indice_denso_cat\n");
+						insere_indice_alfab(library[n].nome, n, &indice_a, library);
+						printf("Inserido em indice_alfab\n");
+						insere_indice_alfab_categorias(library[n].nome, cat, n, &indice_a, &indice_ac);
+						printf("Inserido em indice_alfab_cat\n");
+					#else
+						criar_indice_denso(library, total_registros, &indice_d);
+						criar_indice_denso_categorias(library, categorias, total_registros, &indice_d, &indice_dc);
+						criar_indice_alfab(library, total_registros, &indice_a);
+						criar_indice_alfab_categorias(library, categorias, total_registros, &indice_a, &indice_ac);
+					#endif
 					modificacoes_nao_salvas = 1;
 					//REESCREVER ARQUIVO (possivelmente so editar o arquivo relevante (fseek))
 				}
